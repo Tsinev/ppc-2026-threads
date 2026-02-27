@@ -1,5 +1,4 @@
 #pragma once
-#include <cstddef>
 #include <vector>
 
 #include "task/include/task.hpp"
@@ -25,6 +24,14 @@ class TimurACannonMatrixMultiplication : public BaseTask {
   static void BlockMultiplyAccumulate(const std::vector<std::vector<double>> &a,
                                       const std::vector<std::vector<double>> &b, std::vector<std::vector<double>> &c,
                                       int b_size);
+
+  static void DistributeData(const std::vector<std::vector<double>> &src_a,
+                             const std::vector<std::vector<double>> &src_b,
+                             std::vector<std::vector<std::vector<std::vector<double>>>> &bl_a,
+                             std::vector<std::vector<std::vector<std::vector<double>>>> &bl_b, int b_size, int grid_sz);
+
+  static void CollectResult(const std::vector<std::vector<std::vector<std::vector<double>>>> &bl_c,
+                            std::vector<std::vector<double>> &res, int b_size, int grid_sz);
 };
 
 }  // namespace timur_a_cannon
