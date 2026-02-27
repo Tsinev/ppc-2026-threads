@@ -88,7 +88,6 @@ bool TimurACannonMatrixMultiplication::RunImpl() {
       int shift_b = (i + j) % grid_sz;
       for (int row = 0; row < b_size; ++row) {
         for (int col = 0; col < b_size; ++col) {
-          // Добавлены скобки для приоритетов операций
           blocks_a[i][j][row][col] = mat_a[(i * b_size) + row][(shift_a * b_size) + col];
           blocks_b[i][j][row][col] = mat_b[(shift_b * b_size) + row][(j * b_size) + col];
         }
